@@ -64,6 +64,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 PFAnalytics.trackAppOpenedWithLaunchOptions(launchOptions)
             }
         }
+        
+        //login if there is a returning user on this device
+        login()
         return true
         
     }
@@ -90,6 +93,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
     
-    
+    func login() {
+        
+        //Remember the user's login, if logged in
+        let username : String? = NSUserDefaults.standardUserDefaults().stringForKey("username")
+        
+        //If the user is logged in, set the user's home page as the root view controller of the applicaiton
+        if username != nil {
+            let storyboard : UIStoryboard  = UIStoryboard(name: "Main", bundle: nil)
+            let userVC = storyboard.instantiateViewControllerWithIdentifier("NavBarHome")
+            window?.rootViewController = userVC
+        }
+        
+        
+        }
 }
 

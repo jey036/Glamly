@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A01979D1CF2F5C6004B4320 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A01979C1CF2F5C6004B4320 /* HomeVC.swift */; };
+		0A01979F1CF2F5E6004B4320 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A01979E1CF2F5E6004B4320 /* HeaderView.swift */; };
+		0A0197A11CF2F9AE004B4320 /* pictureCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0197A01CF2F9AE004B4320 /* pictureCell.swift */; };
+		0AB550D81CD8B2DC00770EA3 /* UsersVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB550D71CD8B2DC00770EA3 /* UsersVC.swift */; };
+		0AB550DA1CD8B43900770EA3 /* navigationBarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB550D91CD8B43900770EA3 /* navigationBarVC.swift */; };
+		0AC0F5B61CDAF58400C0CDB1 /* followersVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC0F5B51CDAF58400C0CDB1 /* followersVC.swift */; };
+		0AC0F5B81CDAF5E500C0CDB1 /* followersCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC0F5B71CDAF5E500C0CDB1 /* followersCell.swift */; };
+		0AC0F5BA1CDAF6CD00C0CDB1 /* generic_profile_pic.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0AC0F5B91CDAF6CD00C0CDB1 /* generic_profile_pic.jpg */; };
 		CE0030A71CD3652300AC6E50 /* ZFRippleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0030A61CD3652300AC6E50 /* ZFRippleButton.swift */; };
 		CE2387F41CCC88D200B77029 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2387F31CCC88D200B77029 /* AppDelegate.swift */; };
 		CE2387F61CCC88D200B77029 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2387F51CCC88D200B77029 /* ViewController.swift */; };
@@ -56,6 +64,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0A01979C1CF2F5C6004B4320 /* HomeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
+		0A01979E1CF2F5E6004B4320 /* HeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
+		0A0197A01CF2F9AE004B4320 /* pictureCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = pictureCell.swift; sourceTree = "<group>"; };
+		0AB550D71CD8B2DC00770EA3 /* UsersVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UsersVC.swift; path = ../UsersVC.swift; sourceTree = "<group>"; };
+		0AB550D91CD8B43900770EA3 /* navigationBarVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = navigationBarVC.swift; path = ../navigationBarVC.swift; sourceTree = "<group>"; };
+		0AC0F5B51CDAF58400C0CDB1 /* followersVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = followersVC.swift; sourceTree = "<group>"; };
+		0AC0F5B71CDAF5E500C0CDB1 /* followersCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = followersCell.swift; sourceTree = "<group>"; };
+		0AC0F5B91CDAF6CD00C0CDB1 /* generic_profile_pic.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = generic_profile_pic.jpg; path = ../../Instragram/Instragram/generic_profile_pic.jpg; sourceTree = "<group>"; };
 		CE0030A61CD3652300AC6E50 /* ZFRippleButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZFRippleButton.swift; sourceTree = "<group>"; };
 		CE2387F01CCC88D200B77029 /* Glamly.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Glamly.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE2387F31CCC88D200B77029 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -134,19 +150,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0A0197A21CF2F9BB004B4320 /* Home Page */ = {
+			isa = PBXGroup;
+			children = (
+				0A01979C1CF2F5C6004B4320 /* HomeVC.swift */,
+				0A0197A01CF2F9AE004B4320 /* pictureCell.swift */,
+				0A01979E1CF2F5E6004B4320 /* HeaderView.swift */,
+			);
+			name = "Home Page";
+			sourceTree = "<group>";
+		};
+		0AC0F5BB1CDAF6DD00C0CDB1 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				0AC0F5B91CDAF6CD00C0CDB1 /* generic_profile_pic.jpg */,
+			);
+			name = Images;
+			sourceTree = "<group>";
+		};
 		CE2387E71CCC88D200B77029 = {
 			isa = PBXGroup;
 			children = (
-				CE4904E91CD89E6A00715881 /* libsqlite3.tbd */,
-				CE4904E71CD89E6300715881 /* libz.tbd */,
-				CE4904E51CD89E5C00715881 /* SystemConfiguration.framework */,
-				CE4904E31CD89E5600715881 /* StoreKit.framework */,
-				CE4904E11CD89E5200715881 /* Security.framework */,
-				CE4904DF1CD89E4A00715881 /* QuartzCore.framework */,
-				CE4904DD1CD89E4300715881 /* CoreLocation.framework */,
-				CE4904DB1CD89E3400715881 /* CoreGraphics.framework */,
-				CE4904D91CD89E2F00715881 /* CFNetwork.framework */,
-				CE4904D71CD89E2800715881 /* AudioToolbox.framework */,
 				CE2387F21CCC88D200B77029 /* Glamly */,
 				CE2388071CCC88D200B77029 /* GlamlyTests */,
 				CE2388121CCC88D200B77029 /* GlamlyUITests */,
@@ -168,12 +192,18 @@
 			isa = PBXGroup;
 			children = (
 				CE4904D61CD89DAD00715881 /* frameworks */,
+				0AB550D71CD8B2DC00770EA3 /* UsersVC.swift */,
+				0AB550D91CD8B43900770EA3 /* navigationBarVC.swift */,
 				CE2387F31CCC88D200B77029 /* AppDelegate.swift */,
 				CE2387F51CCC88D200B77029 /* ViewController.swift */,
 				CE2387F71CCC88D200B77029 /* Main.storyboard */,
+				0AC0F5B71CDAF5E500C0CDB1 /* followersCell.swift */,
+				0AC0F5B51CDAF58400C0CDB1 /* followersVC.swift */,
 				CE2387FA1CCC88D200B77029 /* Assets.xcassets */,
 				CE2387FC1CCC88D200B77029 /* LaunchScreen.storyboard */,
 				CE2387FF1CCC88D200B77029 /* Info.plist */,
+				0A0197A21CF2F9BB004B4320 /* Home Page */,
+				0AC0F5BB1CDAF6DD00C0CDB1 /* Images */,
 				CEB7A7491CD2F53B00391E3F /* CustomUI */,
 				CEB7A73C1CD2E69200391E3F /* Login */,
 			);
@@ -201,6 +231,16 @@
 		CE4904D61CD89DAD00715881 /* frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CE4904E91CD89E6A00715881 /* libsqlite3.tbd */,
+				CE4904E71CD89E6300715881 /* libz.tbd */,
+				CE4904E51CD89E5C00715881 /* SystemConfiguration.framework */,
+				CE4904E31CD89E5600715881 /* StoreKit.framework */,
+				CE4904E11CD89E5200715881 /* Security.framework */,
+				CE4904DF1CD89E4A00715881 /* QuartzCore.framework */,
+				CE4904DD1CD89E4300715881 /* CoreLocation.framework */,
+				CE4904DB1CD89E3400715881 /* CoreGraphics.framework */,
+				CE4904D91CD89E2F00715881 /* CFNetwork.framework */,
+				CE4904D71CD89E2800715881 /* AudioToolbox.framework */,
 				CE4904CA1CD89D9700715881 /* Bolts.framework */,
 				CE4904CB1CD89D9700715881 /* Parse.framework */,
 				CE4904CC1CD89D9700715881 /* ParseFacebookUtils.framework */,
@@ -340,6 +380,7 @@
 			files = (
 				CE2387FE1CCC88D200B77029 /* LaunchScreen.storyboard in Resources */,
 				CEB7A73B1CD2E49A00391E3F /* Assets.xcassets in Resources */,
+				0AC0F5BA1CDAF6CD00C0CDB1 /* generic_profile_pic.jpg in Resources */,
 				CE2387F91CCC88D200B77029 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -367,12 +408,19 @@
 			files = (
 				CEB7A7461CD2E8CA00391E3F /* CreateAccountViewController.swift in Sources */,
 				CEB7A7551CD32F7D00391E3F /* HoshiTextField.swift in Sources */,
+				0AB550DA1CD8B43900770EA3 /* navigationBarVC.swift in Sources */,
+				0AC0F5B61CDAF58400C0CDB1 /* followersVC.swift in Sources */,
+				0A01979D1CF2F5C6004B4320 /* HomeVC.swift in Sources */,
 				CEB7A7481CD2E8DC00391E3F /* ForgotPasswordViewController.swift in Sources */,
 				CEB7A7441CD2E8BE00391E3F /* LoginViewController.swift in Sources */,
 				CE2387F61CCC88D200B77029 /* ViewController.swift in Sources */,
 				CEB7A7531CD32F4200391E3F /* TextFieldsEffects.swift in Sources */,
 				CE2387F41CCC88D200B77029 /* AppDelegate.swift in Sources */,
 				CE0030A71CD3652300AC6E50 /* ZFRippleButton.swift in Sources */,
+				0AB550D81CD8B2DC00770EA3 /* UsersVC.swift in Sources */,
+				0A0197A11CF2F9AE004B4320 /* pictureCell.swift in Sources */,
+				0AC0F5B81CDAF5E500C0CDB1 /* followersCell.swift in Sources */,
+				0A01979F1CF2F5E6004B4320 /* HeaderView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
