@@ -64,6 +64,9 @@ class LoginViewController: UIViewController {
             self.presentViewController(alert, animated: true, completion: nil)
         }
         
+        print("USERNAME: \(usernameTxt.text!). PASSWORD: \(passwordTxt.text!)")
+        
+        
         PFUser.logInWithUsernameInBackground(usernameTxt.text!, password: passwordTxt.text!) { (user: PFUser?, error: NSError?)
             in
             if error == nil {

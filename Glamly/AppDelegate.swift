@@ -9,6 +9,10 @@
 import UIKit
 import Parse
 
+
+//global variable for color
+let glamlyColor = UIColor(red: 10.0/255.0, green: 186.0/255.0, blue: 181.0/255.0, alpha: 1)
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
@@ -101,7 +105,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //If the user is logged in, set the user's home page as the root view controller of the applicaiton
         if username != nil {
             let storyboard : UIStoryboard  = UIStoryboard(name: "Main", bundle: nil)
-            let userVC = storyboard.instantiateViewControllerWithIdentifier("NavBarHome")
+            let userVC = storyboard.instantiateViewControllerWithIdentifier("tabBar")
             window?.rootViewController = userVC
         }
         

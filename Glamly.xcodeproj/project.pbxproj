@@ -10,11 +10,30 @@
 		0A01979D1CF2F5C6004B4320 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A01979C1CF2F5C6004B4320 /* HomeVC.swift */; };
 		0A01979F1CF2F5E6004B4320 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A01979E1CF2F5E6004B4320 /* HeaderView.swift */; };
 		0A0197A11CF2F9AE004B4320 /* pictureCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0197A01CF2F9AE004B4320 /* pictureCell.swift */; };
-		0AB550D81CD8B2DC00770EA3 /* UsersVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB550D71CD8B2DC00770EA3 /* UsersVC.swift */; };
-		0AB550DA1CD8B43900770EA3 /* navigationBarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB550D91CD8B43900770EA3 /* navigationBarVC.swift */; };
+		0A0197C21CF68E84004B4320 /* navigationBarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0197C11CF68E84004B4320 /* navigationBarVC.swift */; };
+		0A0197C41CF68EA3004B4320 /* UsersVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0197C31CF68EA3004B4320 /* UsersVC.swift */; };
+		0A0197C81CF69097004B4320 /* generic_profile_pic.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0A0197C71CF69097004B4320 /* generic_profile_pic.jpg */; };
+		0A0197CB1CF6E061004B4320 /* guestVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0197CA1CF6E061004B4320 /* guestVC.swift */; };
+		0A0197D31CF8E9CF004B4320 /* UploadVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0197D21CF8E9CF004B4320 /* UploadVC.swift */; };
+		0A0197D51CF93CF5004B4320 /* PostVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0197D41CF93CF5004B4320 /* PostVC.swift */; };
+		0A0197D71CF93D39004B4320 /* postCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0197D61CF93D39004B4320 /* postCell.swift */; };
+		0A0197DC1CF970C1004B4320 /* comment2.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A0197D81CF970C1004B4320 /* comment2.png */; };
+		0A0197DF1CF970C1004B4320 /* more.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A0197DB1CF970C1004B4320 /* more.png */; };
+		0A0197E21CF9716E004B4320 /* like2.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A0197E01CF9716E004B4320 /* like2.png */; };
+		0A0197E31CF9716E004B4320 /* unlike2.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A0197E11CF9716E004B4320 /* unlike2.png */; };
+		0A0197E51CFA5B9E004B4320 /* tabBarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0197E41CFA5B9E004B4320 /* tabBarVC.swift */; };
+		0A0197EA1CFA6DF9004B4320 /* home_black@3.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A0197E61CFA6DF9004B4320 /* home_black@3.png */; };
+		0A0197EB1CFA6DF9004B4320 /* home_black.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A0197E71CFA6DF9004B4320 /* home_black.png */; };
+		0A0197EC1CFA6DF9004B4320 /* home_black@2.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A0197E81CFA6DF9004B4320 /* home_black@2.png */; };
+		0A0197ED1CFA6DF9004B4320 /* upload_black.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A0197E91CFA6DF9004B4320 /* upload_black.png */; };
+		0A0197EF1CFA6FE7004B4320 /* homesmall.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A0197EE1CFA6FE7004B4320 /* homesmall.png */; };
+		0A0197F11CFA7013004B4320 /* home1.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A0197F01CFA7013004B4320 /* home1.png */; };
+		0A0197F31CFA7153004B4320 /* upload1.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A0197F21CFA7153004B4320 /* upload1.png */; };
+		0A0197F51CFA72EE004B4320 /* home2.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A0197F41CFA72EE004B4320 /* home2.png */; };
+		0A0197F71CFA8C98004B4320 /* CommentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0197F61CFA8C98004B4320 /* CommentVC.swift */; };
+		0A0197F91CFA8CB8004B4320 /* commentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0197F81CFA8CB8004B4320 /* commentCell.swift */; };
 		0AC0F5B61CDAF58400C0CDB1 /* followersVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC0F5B51CDAF58400C0CDB1 /* followersVC.swift */; };
 		0AC0F5B81CDAF5E500C0CDB1 /* followersCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC0F5B71CDAF5E500C0CDB1 /* followersCell.swift */; };
-		0AC0F5BA1CDAF6CD00C0CDB1 /* generic_profile_pic.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0AC0F5B91CDAF6CD00C0CDB1 /* generic_profile_pic.jpg */; };
 		CE0030A71CD3652300AC6E50 /* ZFRippleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0030A61CD3652300AC6E50 /* ZFRippleButton.swift */; };
 		CE2387F41CCC88D200B77029 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2387F31CCC88D200B77029 /* AppDelegate.swift */; };
 		CE2387F61CCC88D200B77029 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2387F51CCC88D200B77029 /* ViewController.swift */; };
@@ -67,11 +86,30 @@
 		0A01979C1CF2F5C6004B4320 /* HomeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
 		0A01979E1CF2F5E6004B4320 /* HeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		0A0197A01CF2F9AE004B4320 /* pictureCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = pictureCell.swift; sourceTree = "<group>"; };
-		0AB550D71CD8B2DC00770EA3 /* UsersVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UsersVC.swift; path = ../UsersVC.swift; sourceTree = "<group>"; };
-		0AB550D91CD8B43900770EA3 /* navigationBarVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = navigationBarVC.swift; path = ../navigationBarVC.swift; sourceTree = "<group>"; };
+		0A0197C11CF68E84004B4320 /* navigationBarVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = navigationBarVC.swift; sourceTree = "<group>"; };
+		0A0197C31CF68EA3004B4320 /* UsersVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsersVC.swift; sourceTree = "<group>"; };
+		0A0197C71CF69097004B4320 /* generic_profile_pic.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = generic_profile_pic.jpg; sourceTree = "<group>"; };
+		0A0197CA1CF6E061004B4320 /* guestVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = guestVC.swift; sourceTree = "<group>"; };
+		0A0197D21CF8E9CF004B4320 /* UploadVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadVC.swift; sourceTree = "<group>"; };
+		0A0197D41CF93CF5004B4320 /* PostVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostVC.swift; sourceTree = "<group>"; };
+		0A0197D61CF93D39004B4320 /* postCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = postCell.swift; sourceTree = "<group>"; };
+		0A0197D81CF970C1004B4320 /* comment2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = comment2.png; sourceTree = "<group>"; };
+		0A0197DB1CF970C1004B4320 /* more.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = more.png; sourceTree = "<group>"; };
+		0A0197E01CF9716E004B4320 /* like2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = like2.png; sourceTree = "<group>"; };
+		0A0197E11CF9716E004B4320 /* unlike2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = unlike2.png; sourceTree = "<group>"; };
+		0A0197E41CFA5B9E004B4320 /* tabBarVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = tabBarVC.swift; sourceTree = "<group>"; };
+		0A0197E61CFA6DF9004B4320 /* home_black@3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "home_black@3.png"; sourceTree = "<group>"; };
+		0A0197E71CFA6DF9004B4320 /* home_black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = home_black.png; sourceTree = "<group>"; };
+		0A0197E81CFA6DF9004B4320 /* home_black@2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "home_black@2.png"; sourceTree = "<group>"; };
+		0A0197E91CFA6DF9004B4320 /* upload_black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = upload_black.png; sourceTree = "<group>"; };
+		0A0197EE1CFA6FE7004B4320 /* homesmall.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = homesmall.png; sourceTree = "<group>"; };
+		0A0197F01CFA7013004B4320 /* home1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = home1.png; sourceTree = "<group>"; };
+		0A0197F21CFA7153004B4320 /* upload1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = upload1.png; sourceTree = "<group>"; };
+		0A0197F41CFA72EE004B4320 /* home2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = home2.png; sourceTree = "<group>"; };
+		0A0197F61CFA8C98004B4320 /* CommentVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentVC.swift; sourceTree = "<group>"; };
+		0A0197F81CFA8CB8004B4320 /* commentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = commentCell.swift; sourceTree = "<group>"; };
 		0AC0F5B51CDAF58400C0CDB1 /* followersVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = followersVC.swift; sourceTree = "<group>"; };
 		0AC0F5B71CDAF5E500C0CDB1 /* followersCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = followersCell.swift; sourceTree = "<group>"; };
-		0AC0F5B91CDAF6CD00C0CDB1 /* generic_profile_pic.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = generic_profile_pic.jpg; path = ../../Instragram/Instragram/generic_profile_pic.jpg; sourceTree = "<group>"; };
 		CE0030A61CD3652300AC6E50 /* ZFRippleButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZFRippleButton.swift; sourceTree = "<group>"; };
 		CE2387F01CCC88D200B77029 /* Glamly.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Glamly.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE2387F31CCC88D200B77029 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -153,6 +191,7 @@
 		0A0197A21CF2F9BB004B4320 /* Home Page */ = {
 			isa = PBXGroup;
 			children = (
+				0A0197CA1CF6E061004B4320 /* guestVC.swift */,
 				0A01979C1CF2F5C6004B4320 /* HomeVC.swift */,
 				0A0197A01CF2F9AE004B4320 /* pictureCell.swift */,
 				0A01979E1CF2F5E6004B4320 /* HeaderView.swift */,
@@ -160,10 +199,52 @@
 			name = "Home Page";
 			sourceTree = "<group>";
 		};
+		0A0197C91CF6A70D004B4320 /* Followers Table */ = {
+			isa = PBXGroup;
+			children = (
+				0AC0F5B71CDAF5E500C0CDB1 /* followersCell.swift */,
+				0AC0F5B51CDAF58400C0CDB1 /* followersVC.swift */,
+			);
+			name = "Followers Table";
+			sourceTree = "<group>";
+		};
+		0A0197FA1CFA8CCB004B4320 /* Post Pages */ = {
+			isa = PBXGroup;
+			children = (
+				0A0197F61CFA8C98004B4320 /* CommentVC.swift */,
+				0A0197F81CFA8CB8004B4320 /* commentCell.swift */,
+				0A0197D41CF93CF5004B4320 /* PostVC.swift */,
+				0A0197D61CF93D39004B4320 /* postCell.swift */,
+				0A0197D21CF8E9CF004B4320 /* UploadVC.swift */,
+			);
+			name = "Post Pages";
+			sourceTree = "<group>";
+		};
+		0A0197FB1CFA8CEC004B4320 /* Navigation Contols */ = {
+			isa = PBXGroup;
+			children = (
+				0A0197C11CF68E84004B4320 /* navigationBarVC.swift */,
+				0A0197E41CFA5B9E004B4320 /* tabBarVC.swift */,
+			);
+			name = "Navigation Contols";
+			sourceTree = "<group>";
+		};
 		0AC0F5BB1CDAF6DD00C0CDB1 /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				0AC0F5B91CDAF6CD00C0CDB1 /* generic_profile_pic.jpg */,
+				0A0197F41CFA72EE004B4320 /* home2.png */,
+				0A0197F21CFA7153004B4320 /* upload1.png */,
+				0A0197F01CFA7013004B4320 /* home1.png */,
+				0A0197EE1CFA6FE7004B4320 /* homesmall.png */,
+				0A0197E61CFA6DF9004B4320 /* home_black@3.png */,
+				0A0197E71CFA6DF9004B4320 /* home_black.png */,
+				0A0197E81CFA6DF9004B4320 /* home_black@2.png */,
+				0A0197E91CFA6DF9004B4320 /* upload_black.png */,
+				0A0197E01CF9716E004B4320 /* like2.png */,
+				0A0197E11CF9716E004B4320 /* unlike2.png */,
+				0A0197D81CF970C1004B4320 /* comment2.png */,
+				0A0197DB1CF970C1004B4320 /* more.png */,
+				0A0197C71CF69097004B4320 /* generic_profile_pic.jpg */,
 			);
 			name = Images;
 			sourceTree = "<group>";
@@ -192,17 +273,17 @@
 			isa = PBXGroup;
 			children = (
 				CE4904D61CD89DAD00715881 /* frameworks */,
-				0AB550D71CD8B2DC00770EA3 /* UsersVC.swift */,
-				0AB550D91CD8B43900770EA3 /* navigationBarVC.swift */,
+				0A0197C31CF68EA3004B4320 /* UsersVC.swift */,
 				CE2387F31CCC88D200B77029 /* AppDelegate.swift */,
 				CE2387F51CCC88D200B77029 /* ViewController.swift */,
 				CE2387F71CCC88D200B77029 /* Main.storyboard */,
-				0AC0F5B71CDAF5E500C0CDB1 /* followersCell.swift */,
-				0AC0F5B51CDAF58400C0CDB1 /* followersVC.swift */,
 				CE2387FA1CCC88D200B77029 /* Assets.xcassets */,
 				CE2387FC1CCC88D200B77029 /* LaunchScreen.storyboard */,
 				CE2387FF1CCC88D200B77029 /* Info.plist */,
+				0A0197FB1CFA8CEC004B4320 /* Navigation Contols */,
+				0A0197C91CF6A70D004B4320 /* Followers Table */,
 				0A0197A21CF2F9BB004B4320 /* Home Page */,
+				0A0197FA1CFA8CCB004B4320 /* Post Pages */,
 				0AC0F5BB1CDAF6DD00C0CDB1 /* Images */,
 				CEB7A7491CD2F53B00391E3F /* CustomUI */,
 				CEB7A73C1CD2E69200391E3F /* Login */,
@@ -378,9 +459,21 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0A0197E31CF9716E004B4320 /* unlike2.png in Resources */,
+				0A0197EA1CFA6DF9004B4320 /* home_black@3.png in Resources */,
+				0A0197EB1CFA6DF9004B4320 /* home_black.png in Resources */,
 				CE2387FE1CCC88D200B77029 /* LaunchScreen.storyboard in Resources */,
+				0A0197DC1CF970C1004B4320 /* comment2.png in Resources */,
+				0A0197EF1CFA6FE7004B4320 /* homesmall.png in Resources */,
+				0A0197F31CFA7153004B4320 /* upload1.png in Resources */,
+				0A0197F51CFA72EE004B4320 /* home2.png in Resources */,
 				CEB7A73B1CD2E49A00391E3F /* Assets.xcassets in Resources */,
-				0AC0F5BA1CDAF6CD00C0CDB1 /* generic_profile_pic.jpg in Resources */,
+				0A0197EC1CFA6DF9004B4320 /* home_black@2.png in Resources */,
+				0A0197C81CF69097004B4320 /* generic_profile_pic.jpg in Resources */,
+				0A0197ED1CFA6DF9004B4320 /* upload_black.png in Resources */,
+				0A0197DF1CF970C1004B4320 /* more.png in Resources */,
+				0A0197E21CF9716E004B4320 /* like2.png in Resources */,
+				0A0197F11CFA7013004B4320 /* home1.png in Resources */,
 				CE2387F91CCC88D200B77029 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -408,18 +501,25 @@
 			files = (
 				CEB7A7461CD2E8CA00391E3F /* CreateAccountViewController.swift in Sources */,
 				CEB7A7551CD32F7D00391E3F /* HoshiTextField.swift in Sources */,
-				0AB550DA1CD8B43900770EA3 /* navigationBarVC.swift in Sources */,
+				0A0197E51CFA5B9E004B4320 /* tabBarVC.swift in Sources */,
+				0A0197D31CF8E9CF004B4320 /* UploadVC.swift in Sources */,
 				0AC0F5B61CDAF58400C0CDB1 /* followersVC.swift in Sources */,
+				0A0197C41CF68EA3004B4320 /* UsersVC.swift in Sources */,
 				0A01979D1CF2F5C6004B4320 /* HomeVC.swift in Sources */,
+				0A0197D51CF93CF5004B4320 /* PostVC.swift in Sources */,
 				CEB7A7481CD2E8DC00391E3F /* ForgotPasswordViewController.swift in Sources */,
 				CEB7A7441CD2E8BE00391E3F /* LoginViewController.swift in Sources */,
 				CE2387F61CCC88D200B77029 /* ViewController.swift in Sources */,
 				CEB7A7531CD32F4200391E3F /* TextFieldsEffects.swift in Sources */,
+				0A0197F71CFA8C98004B4320 /* CommentVC.swift in Sources */,
+				0A0197F91CFA8CB8004B4320 /* commentCell.swift in Sources */,
+				0A0197D71CF93D39004B4320 /* postCell.swift in Sources */,
+				0A0197CB1CF6E061004B4320 /* guestVC.swift in Sources */,
 				CE2387F41CCC88D200B77029 /* AppDelegate.swift in Sources */,
 				CE0030A71CD3652300AC6E50 /* ZFRippleButton.swift in Sources */,
-				0AB550D81CD8B2DC00770EA3 /* UsersVC.swift in Sources */,
 				0A0197A11CF2F9AE004B4320 /* pictureCell.swift in Sources */,
 				0AC0F5B81CDAF5E500C0CDB1 /* followersCell.swift in Sources */,
+				0A0197C21CF68E84004B4320 /* navigationBarVC.swift in Sources */,
 				0A01979F1CF2F5E6004B4320 /* HeaderView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
