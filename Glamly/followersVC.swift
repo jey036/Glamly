@@ -163,7 +163,7 @@ class followersVC: UITableViewController {
                 tableView.reloadData()
             } else {
                 cell.followBtn.setTitle("Following", forState: .Normal)
-                cell.followBtn.backgroundColor = UIColor.greenColor()
+                cell.followBtn.backgroundColor = glamlyColor
                 tableView.reloadData()
             }
         }

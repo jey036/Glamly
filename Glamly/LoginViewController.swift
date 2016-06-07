@@ -11,6 +11,8 @@ import Parse
 
 class LoginViewController: UIViewController {
 
+    @IBOutlet weak var GalmlyLbl: UILabel!
+    
     // textfields
     @IBOutlet weak var usernameTxt: HoshiTextField!
     @IBOutlet weak var passwordTxt: HoshiTextField!
@@ -22,7 +24,18 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        GalmlyLbl.font = UIFont(name: "Pacifico", size: 40)
+       var color = GalmlyLbl.textColor
+        print("Here is the color \(color)")
+        print("Here is second color \(self.view.backgroundColor)")
+        //alignment
+        GalmlyLbl.frame = CGRectMake(10, 80, self.view.frame.width - 20, 80)
+        usernameTxt.frame = CGRectMake(10, GalmlyLbl.frame.origin.y + 120, self.view.frame.size.width - 20, 50)
+        passwordTxt.frame = CGRectMake(10, usernameTxt.frame.origin.y + 90, self.view.frame.size.width - 20, 50)
+        forgotBtn.frame = CGRectMake(10, passwordTxt.frame.origin.y + 50, self.view.frame.size.width - 20, 50)
+        loginBtn.frame = CGRectMake(20, forgotBtn.frame.origin.y + 60, self.view.frame.size.width / 4, 60)
+        createBtn.frame = CGRectMake(self.view.frame.size.width - self.view.frame.size.width / 4 - 20, loginBtn.frame.origin.y, self.view.frame.size.width / 4, 60)
         
         // hide keyboard when user presses anywhere on the screen
         let hideTap = UITapGestureRecognizer(target: self, action: #selector(CreateAccountViewController.hideKeyboardTap(_:)))
@@ -37,7 +50,9 @@ class LoginViewController: UIViewController {
         avaTap.numberOfTapsRequired = 2
         
     }
-    
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return UIStatusBarStyle.LightContent
+    }
     // hide keyboard when user tapped
     func hideKeyboardTap(recognizer:UITapGestureRecognizer) {
         // remove keyboard
@@ -64,9 +79,6 @@ class LoginViewController: UIViewController {
             self.presentViewController(alert, animated: true, completion: nil)
         }
         
-        print("USERNAME: \(usernameTxt.text!). PASSWORD: \(passwordTxt.text!)")
-        
-        
         PFUser.logInWithUsernameInBackground(usernameTxt.text!, password: passwordTxt.text!) { (user: PFUser?, error: NSError?)
             in
             if error == nil {
@@ -90,17 +102,13 @@ class LoginViewController: UIViewController {
             }
         }
     }
-
     
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    override func shouldAutorotate() -> Bool {
+        return false
     }
-    */
+    
+    override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
+        return UIInterfaceOrientationMask.Portrait
+    }
 
 }

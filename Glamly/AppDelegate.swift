@@ -11,13 +11,13 @@ import Parse
 
 
 //global variable for color
-let glamlyColor = UIColor(red: 10.0/255.0, green: 186.0/255.0, blue: 181.0/255.0, alpha: 1)
-
+//var glamlyColor = UIColor(red: 10.0/255.0, green: 186.0/255.0, blue: 181.0/255.0, alpha: 1)
+var glamlyColor = UIColor(red: 0.0941176, green: 0.658824, blue: 0.7529, alpha: 1)
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-    
+    var useMPC = false
     var window: UIWindow?
-    
+    var mpcManager: MPCManager!
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
@@ -71,6 +71,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         //login if there is a returning user on this device
         login()
+        let username : String? = NSUserDefaults.standardUserDefaults().stringForKey("username")
+        if username != nil {
+            useMPC = true
+            mpcManager = MPCManager()
+        }
         return true
         
     }

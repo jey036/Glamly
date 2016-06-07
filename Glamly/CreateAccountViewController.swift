@@ -61,16 +61,23 @@ class CreateAccountViewController: UIViewController, UIImagePickerControllerDele
         avaImg.userInteractionEnabled = true
         avaImg.addGestureRecognizer(avaTap)
         
-        avaImg.layer.cornerRadius = avaImg.frame.size.width / 2
-        avaImg.clipsToBounds = true
         
         // programatically align the UI
-        
         alignUIComponents()
     }
     
     func alignUIComponents() {
-        avaImg.frame = CGRectMake(self.view.frame.size.width / 2 - 40, 40 ,80, 80)
+        
+        avaImg.frame = CGRectMake(self.view.frame.size.width / 2 - 60, 40 , 120, 120)
+        usernameTxt.frame = CGRectMake(10, avaImg.frame.origin.y + 140, self.view.frame.size.width - 20, 50)
+        emailTxt.frame = CGRectMake(10, usernameTxt.frame.origin.y + 60, self.view.frame.size.width - 20, 50)
+        passwordTxt.frame = CGRectMake(10, emailTxt.frame.origin.y + 110, self.view.frame.size.width - 20, 50)
+        reenterTxt.frame = CGRectMake(10, passwordTxt.frame.origin.y + 60, self.view.frame.width - 20, 50)
+        
+        createBtn.frame = CGRectMake(20, reenterTxt.frame.origin.y + 70, self.view.frame.width / 4 , 60)
+        cancelBtn.frame = CGRectMake(self.view.frame.size.width - self.view.frame.size.width / 4 - 20, createBtn.frame.origin.y,
+                                    self.view.frame.size.width / 4, 60)
+        
     }
     
     //load the user's ava image from photo library
@@ -185,5 +192,13 @@ class CreateAccountViewController: UIViewController, UIImagePickerControllerDele
         // Pass the selected object to the new view controller.
     }
     */
+    
+    override func shouldAutorotate() -> Bool {
+        return false
+    }
+    
+    override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
+        return UIInterfaceOrientationMask.Portrait
+    }
 
 }

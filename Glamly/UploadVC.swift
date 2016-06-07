@@ -22,7 +22,7 @@ class UploadVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
         
         //disable the upload button
         uploadBtn.enabled = false
-        uploadBtn.backgroundColor = UIColor.lightGrayColor()
+        uploadBtn.backgroundColor = glamlyColor //UIColor.lightGrayColor()
         
         //hide the remove button until an image is uploaded
         removeBtn.hidden = true
@@ -101,7 +101,7 @@ class UploadVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
         
         //enable the upload button on scree
         self.uploadBtn.enabled = true
-        self.uploadBtn.backgroundColor = UIColor(red: 52.0/255.0, green: 169.0/255.0, blue: 255.0/255.0, alpha: 1)
+        self.uploadBtn.backgroundColor = glamlyColor //UIColor(red: 52.0/255.0, green: 169.0/255.0, blue: 255.0/255.0, alpha: 1)
         
         //show the remove button now 
         self.removeBtn.hidden = false
@@ -160,9 +160,10 @@ class UploadVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
         let object = PFObject(className:"posts")
         object["username"] = PFUser.currentUser()!.username
         object["ava"] = PFUser.currentUser()!.objectForKey("image") as! PFFile
-        object["uuid"] = "\(PFUser.currentUser()!.username) \(NSUUID().UUIDString)"
+        let uuid = NSUUID().UUIDString
+        object["uuid"] = "\(PFUser.currentUser()!.username) \(uuid)"
         
-        if titleText.text!.isEmpty {
+        if titleText.text!.isEmpty || titleText.text! == "Add a caption..." {
             object["title"] = ""
         } else {
             //send text to server without whitespaces and new lines
@@ -174,6 +175,38 @@ class UploadVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
         let picFile = PFFile(name: "post.jpg", data: picData!)
         object["pic"] = picFile
         
+        
+        // send the hashtag to the server
+        let words : [String] = titleText.text!.componentsSeparatedByCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
+        
+        //define tagged words
+        for var word in words {
+            
+            //save the hashtag in the server
+            if word.hasPrefix("#") {
+                //cut the symbols, just send the word
+                word = word.stringByTrimmingCharactersInSet(NSCharacterSet.punctuationCharacterSet())
+                word = word.stringByTrimmingCharactersInSet(NSCharacterSet.symbolCharacterSet())
+                
+                let hashtagObj = PFObject(className:"hashtags")
+                hashtagObj["to"] =  "Optional(" + "\"" + PFUser.currentUser()!.username! + "\"" + ") " +  uuid
+                hashtagObj["by"] = PFUser.currentUser()!.username!
+                hashtagObj["hashtag"] = word.lowercaseString
+                hashtagObj["comment"]  = titleText.text
+                hashtagObj.saveInBackgroundWithBlock({ (success:Bool, error:NSError?) in
+                    if success {
+                        print("saved hashtag: \(word)")
+                    } else {
+                        print(error!.localizedDescription)
+                    }
+                })
+                
+            }
+        }
+
+        
+        
+        
         //saving the changes on the server
         object.saveInBackgroundWithBlock { (success: Bool, error:NSError?) in
             if error == nil {
@@ -184,7 +217,7 @@ class UploadVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
                 //clear the components after upload
                 //disable the upload button
                 self.uploadBtn.enabled = false
-                self.uploadBtn.backgroundColor = UIColor.lightGrayColor()
+                self.uploadBtn.backgroundColor = glamlyColor //UIColor.lightGrayColor()
                 
                 //hide the remove button until an image is uploaded
                 self.removeBtn.hidden = true
@@ -196,7 +229,7 @@ class UploadVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
                 self.titleText.text = "Add a caption..."
                 self.titleText.textColor = UIColor.lightGrayColor()
 
-                
+                self.viewDidLoad()
                 
             } else {
                 print(error!.localizedDescription)
@@ -206,6 +239,14 @@ class UploadVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
         
     }
     
+    
+    override func shouldAutorotate() -> Bool {
+        return false
+    }
+    
+    override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
+        return UIInterfaceOrientationMask.Portrait
+    }
    
 
 }

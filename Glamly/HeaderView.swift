@@ -71,7 +71,7 @@ class HeaderView: UICollectionReusableView {
                 //if successful communication with server, modify the table to now show following
                 if success {
                     self.editProfileBtn.setTitle("Following", forState: .Normal)
-                    self.editProfileBtn.backgroundColor = UIColor.greenColor()
+                    self.editProfileBtn.backgroundColor = glamlyColor   
                 } else {
                     print(error!.localizedDescription)
                 }

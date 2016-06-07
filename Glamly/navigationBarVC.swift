@@ -16,7 +16,7 @@ class navigationBarVC: UINavigationController {
         self.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.whiteColor()]
         
         self.navigationBar.tintColor = .whiteColor()
-        self.navigationBar.barTintColor  = UIColor(red: 10.0/255.0, green: 186.0/255.0, blue: 181.0/255.0, alpha: 1)
+        self.navigationBar.barTintColor  = glamlyColor // UIColor(red: 10.0/255.0, green: 186.0/255.0, blue: 181.0/255.0, alpha: 1)
         self.navigationBar.translucent = false
         self.navigationController?.navigationBarHidden = true
         

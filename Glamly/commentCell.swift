@@ -11,9 +11,10 @@ import UIKit
 class commentCell: UITableViewCell {
 
     // UI objects
+    @IBOutlet weak var commentLbl: KILabel!
     @IBOutlet weak var usernameBtn: UIButton!
     @IBOutlet weak var avaImg: UIImageView!
-    @IBOutlet weak var commentLbl: UILabel!
+    
     @IBOutlet weak var date: UILabel!
     
     

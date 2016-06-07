@@ -163,7 +163,7 @@ class guestVC: UICollectionViewController {
                     header.editProfileBtn.backgroundColor = UIColor.lightGrayColor()
                 } else {
                     header.editProfileBtn.setTitle("Following", forState: .Normal)
-                    header.editProfileBtn.backgroundColor = UIColor.greenColor()
+                    header.editProfileBtn.backgroundColor = glamlyColor
                 }
             } else {
                 print(error!.localizedDescription)
@@ -259,5 +259,14 @@ class guestVC: UICollectionViewController {
         //navigate to post view controller
         let post = self.storyboard?.instantiateViewControllerWithIdentifier("PostVC") as! PostVC
         self.navigationController?.pushViewController(post, animated: true)
+    }
+    
+    
+    override func shouldAutorotate() -> Bool {
+        return false
+    }
+    
+    override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
+        return UIInterfaceOrientationMask.Portrait
     }
 }

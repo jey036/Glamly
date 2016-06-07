@@ -20,7 +20,7 @@ class postCell: UITableViewCell {
     @IBOutlet weak var commentBtn: UIButton!
     @IBOutlet weak var moreBtn: UIButton!
     @IBOutlet weak var likeLbl: UILabel!
-    @IBOutlet weak var titleLbl: UILabel!
+    @IBOutlet weak var titleLbl: KILabel!
     @IBOutlet weak var uuidLbl: UILabel!
     
     override func awakeFromNib() {

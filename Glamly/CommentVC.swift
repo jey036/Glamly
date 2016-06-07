@@ -58,13 +58,18 @@ class CommentVC: UIViewController, UITextViewDelegate, UITableViewDelegate, UITa
         NSNotificationCenter.defaultCenter().addObserver(self, selector:"keyboardWillHide:", name: UIKeyboardWillHideNotification, object: nil)
         sendBtn.enabled = false
         
-        //dismiss keyboard tap
-        let keyboardTap = UITapGestureRecognizer(target: self, action: "keyboardTap")
-        keyboardTap.numberOfTapsRequired = 1
-        self.view.userInteractionEnabled = true
-        self.view.addGestureRecognizer(keyboardTap)
+//        //dismiss keyboard tap
+//        let keyboardTap = UITapGestureRecognizer(target: self, action: "hideKeyboardOnTap")
+//        keyboardTap.numberOfTapsRequired = 1
+//        self.view.userInteractionEnabled = true
+//        self.view.addGestureRecognizer(keyboardTap)
+//        
+//        let textTap = UITapGestureRecognizer(target:self, action:"showKeyboardOnTap")
+//        textTap.numberOfTapsRequired = 1
+//        self.commentTxt.userInteractionEnabled = true
+//        self.commentTxt.addGestureRecognizer(textTap)
         
-        //delegates 
+        //delegates
         commentTxt.delegate = self
         tableView.delegate = self
         tableView.dataSource  = self
@@ -86,6 +91,7 @@ class CommentVC: UIViewController, UITextViewDelegate, UITableViewDelegate, UITa
     }
     
     @IBAction func sendBtn_click(sender: AnyObject) {
+        
         //step 1 show the comment directly on screen without going to server
         usernameArray.append(PFUser.currentUser()!.username!)
         avaArray.append(PFUser.currentUser()!.objectForKey("image") as! PFFile)
@@ -96,7 +102,7 @@ class CommentVC: UIViewController, UITextViewDelegate, UITableViewDelegate, UITa
         tableView.reloadData()
         
         //send information to server
-        let commentObj = PFObject(className: "comment")
+        let commentObj = PFObject(className: "comments")
         commentObj["username"] = PFUser.currentUser()!.username!
         commentObj["ava"] = PFUser.currentUser()!.objectForKey("image")
         commentObj["to"] = commentuuid.last!
@@ -106,8 +112,37 @@ class CommentVC: UIViewController, UITextViewDelegate, UITableViewDelegate, UITa
         //scroll to the bottom and see the written comment
         self.tableView.scrollToRowAtIndexPath(NSIndexPath(forItem: commentArray.count - 1, inSection: 0), atScrollPosition: UITableViewScrollPosition.Bottom, animated: false)
         
+        // send the hashtag to the server
+        let words : [String] = commentTxt.text!.componentsSeparatedByCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
+        
+        //define tagged words
+        for var word in words {
+            
+            //save the hashtag in the server
+            if word.hasPrefix("#") {
+                //cut the symbols, just send the word
+                word = word.stringByTrimmingCharactersInSet(NSCharacterSet.punctuationCharacterSet())
+                word = word.stringByTrimmingCharactersInSet(NSCharacterSet.symbolCharacterSet())
+                
+                let hashtagObj = PFObject(className:"hashtags")
+                hashtagObj["to"] = commentuuid.last!
+                hashtagObj["by"] = PFUser.currentUser()!.username!
+                hashtagObj["hashtag"]  = word.lowercaseString
+                hashtagObj["comment"] = commentTxt.text
+                hashtagObj.saveInBackgroundWithBlock({ (success:Bool, error:NSError?) in
+                    if success {
+                        print("saved hashtag: \(word)")
+                    } else {
+                        print(error!.localizedDescription)
+                    }
+                })
+                
+            }
+        }
+        
+        
         //reset the UI
-        commentTxt.text! = ""
+        commentTxt.text = ""
         commentTxt.frame.size.height = commentHeight
         commentTxt.frame.origin.y =  sendBtn.frame.origin.y
         
@@ -128,7 +163,7 @@ class CommentVC: UIViewController, UITextViewDelegate, UITableViewDelegate, UITa
             
             //if comments on the server are more than 15, implement pull to refresh function
             if self.page < count {
-                self.refresher.addTarget(self, action: "laodMore", forControlEvents: UIControlEvents.ValueChanged)
+                self.refresher.addTarget(self, action: "loadMore", forControlEvents: UIControlEvents.ValueChanged)
                 self.tableView.addSubview(self.refresher)
             }
             
@@ -226,7 +261,7 @@ class CommentVC: UIViewController, UITextViewDelegate, UITableViewDelegate, UITa
         cell.usernameBtn.sizeToFit()
         
         
-        cell.commentLbl.text! = commentArray[indexPath.row]
+        cell.commentLbl.text = commentArray[indexPath.row]
         avaArray[indexPath.row].getDataInBackgroundWithBlock { (data:NSData?, error:NSError?) in
             if error == nil {
                 cell.avaImg.image = UIImage(data: data!)
@@ -235,7 +270,7 @@ class CommentVC: UIViewController, UITextViewDelegate, UITableViewDelegate, UITa
             }
             
         }
-        
+    
         //calculate date
         let from = dateArray[indexPath.row]
         let now = NSDate()
@@ -267,6 +302,36 @@ class CommentVC: UIViewController, UITextViewDelegate, UITableViewDelegate, UITa
             cell.date.text! = "\(difference.weekOfMonth)w."
         }
         cell.usernameBtn.layer.setValue(indexPath, forKey: "index")
+        
+        // the user taps an @mention
+        cell.commentLbl.userHandleLinkTapHandler  = { label, handle, rang in
+            
+            var mention = handle
+            mention = String(mention.characters.dropFirst())
+            
+            if mention.lowercaseString == PFUser.currentUser()!.username! {
+                let home = self.storyboard?.instantiateViewControllerWithIdentifier("HomeVC") as! HomeVC
+                self.navigationController?.pushViewController(home, animated: true)
+            } else {
+                guestname.append(mention.lowercaseString)
+                let guest = self.storyboard?.instantiateViewControllerWithIdentifier("guestVC") as! guestVC
+                self.navigationController?.pushViewController(guest, animated: true)
+                
+            }
+            
+        }
+        
+        
+        // the user taps a #hashtag
+        cell.commentLbl.hashtagLinkTapHandler = { label, handle, range in
+            
+            var mention = handle
+            mention = String(mention.characters.dropFirst())
+            hashtag.append(mention.lowercaseString)
+            let hash = self.storyboard?.instantiateViewControllerWithIdentifier("HashtagsVC")  as! HashtagsVC
+            self.navigationController?.pushViewController(hash, animated: true)
+        }
+        
         return cell
     }
     
@@ -319,7 +384,7 @@ class CommentVC: UIViewController, UITextViewDelegate, UITableViewDelegate, UITa
         let cell = tableView.cellForRowAtIndexPath(indexPath) as! commentCell
         
         //ACTION to delete a comment
-        let delete = UITableViewRowAction(style: UITableViewRowActionStyle.Normal, title: "1") { (action:UITableViewRowAction, indexPath:NSIndexPath) in
+        let delete = UITableViewRowAction(style: UITableViewRowActionStyle.Normal, title: "   ") { (action:UITableViewRowAction, indexPath:NSIndexPath) in
             
             //delete the comment from the server
             let commentQuery = PFQuery(className: "comments")
@@ -330,12 +395,34 @@ class CommentVC: UIViewController, UITextViewDelegate, UITableViewDelegate, UITa
                     
                     //delete the objects that meet restrictions above
                     for object in objects! {
-                        object.deleteEventually()
+                        print("DELETED")
+                        object.deleteInBackgroundWithBlock({ (success:Bool, error:NSError?) in
+                            
+                        })
                     }
                 } else {
                     print(error!.localizedDescription)
                 }
             })
+            
+            
+            //delete the hashtag from the server if it exists
+            let hashtagQuery = PFQuery(className: "hashtags")
+            hashtagQuery.whereKey("to", equalTo: commentuuid.last!)
+            hashtagQuery.whereKey("by", equalTo:cell.usernameBtn.titleLabel!.text!)
+            hashtagQuery.whereKey("comment", equalTo: cell.commentLbl.text!)
+            hashtagQuery.findObjectsInBackgroundWithBlock({ (objects:[PFObject]?, error:NSError?) in
+                if error == nil {
+                    for object in objects! {
+                        object.deleteInBackgroundWithBlock({ (success: Bool, error: NSError?) in
+                            if success {
+                                print("deleted hashtag object from server")
+                            }
+                        })
+                    }
+                }
+            })
+            
         
             self.tableView.setEditing(false, animated: true)
             
@@ -350,7 +437,7 @@ class CommentVC: UIViewController, UITextViewDelegate, UITableViewDelegate, UITa
         }
         
         //ACTION to mention someone in a comment
-        let address = UITableViewRowAction(style: UITableViewRowActionStyle.Normal, title: "2") { (action:UITableViewRowAction, indexPath:NSIndexPath) in
+        let address = UITableViewRowAction(style: UITableViewRowActionStyle.Normal, title: "   ") { (action:UITableViewRowAction, indexPath:NSIndexPath) in
             //include user name in text view
             self.commentTxt.text! = "\(self.commentTxt.text! + "@" + self.usernameArray[indexPath.row] + " ")"
             self.sendBtn.enabled = true
@@ -358,7 +445,7 @@ class CommentVC: UIViewController, UITextViewDelegate, UITableViewDelegate, UITa
         }
         
         //ACTION to complain about a comment
-        let complain = UITableViewRowAction(style: UITableViewRowActionStyle.Normal, title: "3") { (action:UITableViewRowAction, indexPath:NSIndexPath) in
+        let complain = UITableViewRowAction(style: UITableViewRowActionStyle.Normal, title: "   ") { (action:UITableViewRowAction, indexPath:NSIndexPath) in
             
             //send complaint to server regarding selected comment
             let complaintObj = PFObject(className: "complain")
@@ -378,9 +465,9 @@ class CommentVC: UIViewController, UITextViewDelegate, UITableViewDelegate, UITa
         }
         
         //buttons background color
-        delete.backgroundColor = UIColor.redColor()
-        address.backgroundColor = UIColor.grayColor()
-        complain.backgroundColor = UIColor.grayColor()
+        delete.backgroundColor = UIColor(patternImage: UIImage(named:"deleteBtn.png")!)
+        address.backgroundColor = UIColor(patternImage: UIImage(named:"addressBtn.png")!)
+        complain.backgroundColor = UIColor(patternImage: UIImage(named:"complaintBtn.png")!)
         
         //when comments belong to the user
         if cell.usernameBtn.titleLabel!.text! == PFUser.currentUser()!.username! {
@@ -420,7 +507,6 @@ class CommentVC: UIViewController, UITextViewDelegate, UITableViewDelegate, UITa
         }
     }
     
-    
     func keyboardWillHide(notification: NSNotification) {
        
         //loading function when keyboard is not shown
@@ -433,9 +519,9 @@ class CommentVC: UIViewController, UITextViewDelegate, UITableViewDelegate, UITa
         }
     }
     
-    func keyboardTap() {
-        self.view.endEditing(true)
-    }
+//    func keyboardTap() {
+//        self.view.endEditing(true)
+//    }
     
     func alignment() {
         
@@ -490,5 +576,13 @@ class CommentVC: UIViewController, UITextViewDelegate, UITableViewDelegate, UITa
         }
     }
     
+    
+    override func shouldAutorotate() -> Bool {
+        return false
+    }
+    
+    override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
+        return UIInterfaceOrientationMask.Portrait
+    }
     
 }

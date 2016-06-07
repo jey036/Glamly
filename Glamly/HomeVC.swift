@@ -8,18 +8,34 @@
 
 import UIKit
 import Parse
+import MultipeerConnectivity
 
+//global variable for passing mpc data to UsersVC
+//var mpcUsernames = [String]()
 
-
-class HomeVC: UICollectionViewController {
+class HomeVC: UICollectionViewController, MPCManagerDelegate {
+    
+    
+    let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
     
     var refresher : UIRefreshControl!
-    var page: Int = 10
+    var page: Int = 12
     var picArray = [PFFile]()
     var userNameArray = [String]()
     var uuidArray = [String]()
     
     override func viewDidLoad() {
+        if appDelegate.useMPC {
+        appDelegate.mpcManager.delegate = self
+        appDelegate.mpcManager.browser.startBrowsingForPeers()
+        appDelegate.mpcManager.advertiser.startAdvertisingPeer()
+        
+        for peer in appDelegate.mpcManager.foundPeers {
+            appDelegate.mpcManager.browser.invitePeer(peer, toSession: appDelegate.mpcManager.session, withContext: nil, timeout: 30)
+        }
+        
+        }
+        
         super.viewDidLoad()
         collectionView?.backgroundColor = .whiteColor()
         self.navigationItem.title = PFUser.currentUser()?.username
@@ -30,12 +46,51 @@ class HomeVC: UICollectionViewController {
         refresher.addTarget(self, action: "refresh", forControlEvents: .ValueChanged)
         collectionView?.addSubview(refresher)
         
+        //revceive notification from editVC
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "reload:", name: "reload", object: nil)
+        
         loadPosts()
         
         //recieve notification from uploadVC
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "uploaded:", name: "uploaded", object: nil)
-        
     }
+    
+    //reloading function
+    func reload(notification:NSNotification){
+        collectionView?.reloadData()
+    }
+    
+    
+    func foundPeer() {
+        print("found peers:")
+        for id in appDelegate.mpcManager.displayNames {
+            print("peer: \(id)")
+            //mpcUsernames.append(id)
+        }
+        print("# of peers: \(self.appDelegate.mpcManager.displayNames.count)")
+    }
+    
+    
+    
+    func lostPeer() {
+        print("lost peer")
+    }
+    
+    
+    func sendMPCData() {
+//        let usernameDictionary : [String: String] = ["username": PFUser.currentUser()!.username!]
+//        if appDelegate.mpcManager.sendData(dictionaryWithData: usernameDictionary, toPeer: appDelegate.mpcManager.session.connectedPeers[0] ) {
+//            mpcUsernames.append(PFUser.currentUser()!.username!)
+//        }
+    }
+    
+    //MPC CODE
+    func invitationWasReceived(formPeer: String) {
+        sendMPCData()
+        self.appDelegate.mpcManager.invitationHandler(true, self.appDelegate.mpcManager.session)
+    }
+    
+    
     
     func refresh() {
         collectionView?.reloadData()
@@ -52,24 +107,40 @@ class HomeVC: UICollectionViewController {
         return size
     }
     
+    
+    
+ 
+    
     func loadPosts() {
+        
+        //target the specific table named 'posts' in the database
         let query = PFQuery(className: "posts")
+        //search for the 'username' column, where the username equals the current user
         query.whereKey("username", equalTo: PFUser.currentUser()!.username!)
+        
+        //set a limit on the number of posts that can be displayed initially, without pull to refresh
         query.limit = page
+        
+        //find these objects in the database
         query.findObjectsInBackgroundWithBlock ({ (objects: [PFObject]?, error : NSError?)-> Void in
             if error == nil {
-                //clean up
+                
+                //clean up our datastructures from previous calls
                 self.uuidArray.removeAll(keepCapacity: false)
                 self.picArray.removeAll(keepCapacity: false)
                 
                 //find objects related to our request
                 for object in objects! {
+                    
                     //add found data to arrays (holders)
                     self.uuidArray.append(object.valueForKey("uuid") as! String)
                     self.picArray.append(object.valueForKey("pic") as! PFFile)
                 }
+                //reload this infomation since the tableview displays information
+                //form the arrays that we have just populated
                 self.collectionView?.reloadData()
             }else{
+                //print any error if conenctinf to the database
                 print(error!.localizedDescription)
             }
         })
@@ -87,7 +158,7 @@ class HomeVC: UICollectionViewController {
         PFUser.logOutInBackgroundWithBlock { (error:NSError?) in
             if error == nil {
                 //erase nsuserdefaults, removed logged in user from app memory
-                NSUserDefaults.standardUserDefaults().removeObjectForKey("user")
+                NSUserDefaults.standardUserDefaults().removeObjectForKey("username")
                 NSUserDefaults.standardUserDefaults().synchronize()
                 
                 let signInVC = self.storyboard?.instantiateViewControllerWithIdentifier("loginVC") as! LoginViewController
@@ -228,8 +299,8 @@ class HomeVC: UICollectionViewController {
            //increase page size
             page = page + 12
             let query = PFQuery(className:"posts")
-            query.whereKey("username", equalTo: guestname.last!)
-            query.limit = 24
+            query.whereKey("username", equalTo: PFUser.currentUser()!.username!)
+            query.limit = page
             query.findObjectsInBackgroundWithBlock({ (objects:[PFObject]?, error:NSError?) in
                 if error == nil {
                     
@@ -258,5 +329,13 @@ class HomeVC: UICollectionViewController {
         self.navigationController?.pushViewController(post, animated: true)
     }
     
+    
+    override func shouldAutorotate() -> Bool {
+        return false
+    }
+    
+    override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
+        return UIInterfaceOrientationMask.Portrait
+    }
 
 }
